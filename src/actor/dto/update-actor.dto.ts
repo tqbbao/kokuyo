@@ -1,6 +1,7 @@
 import { IsNotEmpty } from "class-validator";
 
-export class CreateActorDTO{
+
+export class UpdateActorDTO{
     @IsNotEmpty()
     firstName: string;
     @IsNotEmpty()

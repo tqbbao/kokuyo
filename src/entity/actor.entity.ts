@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import {
     Column,
     Entity,
@@ -16,6 +17,7 @@ import {
     actorId: number;
   
     @Column("varchar", { name: "first_name", length: 45 })
+    @Exclude()
     firstName: string;
   
     @Column("varchar", { name: "last_name", length: 45 })
