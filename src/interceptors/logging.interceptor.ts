@@ -10,13 +10,18 @@ import { tap } from 'rxjs/operators';
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    console.log('Một...');
+    console.log('---Interceptor(Một...');
 
     const now = Date.now();
     return next.handle().pipe(
-      tap(() => {
-        console.log('Ba...');
+      tap((data) => {
+        console.log('---Interceptor(Ba...');
+        console.log("message: ", data.message);
+        console.log("data: ", data.data);
+        console.log("actorId: ", data.data['actorId']);
+
       }),
+      
     );
   }
 }
