@@ -16,7 +16,6 @@ export class ActorService {
   async findAll() {
     return await this.actorRepository.find();
   }
-
   // create findbyid method
   async findById(id: number) {
     return await this.actorRepository.findOne({
@@ -40,6 +39,16 @@ export class ActorService {
     }
     actor = { ...actor, ...data };
     await this.actorRepository.save(actor);
+
     return actor;
+  }
+
+  async test()
+  {
+    return await this.actorRepository
+    .createQueryBuilder('actor')
+    .where('actor.actorId = :id', { id: 1 })
+    .getOne();
+
   }
 }
